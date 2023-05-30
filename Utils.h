@@ -5,6 +5,7 @@
 #include <filesystem>
 #include <array>
 #include <string>
+#include <codecvt>
 
 #define NOMINMAX
 #define WIN32_LEAN_AND_MEAN
@@ -26,6 +27,9 @@ extern std::array<std::string_view, 256> key_codes;
 namespace Utils
 {
 	std::vector<std::string> parse_str(std::string str, char delimiter);
+
+	std::wstring Utf8StringToWString( const std::string& str );
+	std::string WStringToUtf8String( const std::wstring& str );
 
 	void write_file(const wchar_t* path, unsigned char* buf, size_t len);
 	void write_file(const std::wstring path, unsigned char* buffer, size_t buffer_len);
