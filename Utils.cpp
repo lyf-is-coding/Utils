@@ -275,6 +275,18 @@ std::vector<std::string> Utils::parse_str(std::string str, char delimiter)
 	return result;
 }
 
+std::wstring Utils::Utf8StringToWString( const std::string& str )
+{
+	std::wstring_convert<std::codecvt_utf8<wchar_t>> myconv;
+	return myconv.from_bytes( str );
+}
+
+std::string Utils::WStringToUtf8String( const std::wstring& str )
+{
+	std::wstring_convert<std::codecvt_utf8<wchar_t>> myconv;
+	return myconv.to_bytes( str );
+}
+
 void Utils::write_file(const wchar_t* path, unsigned char* buffer, size_t buffer_len)
 {
 	FILE* file = NULL;
